@@ -1,0 +1,24 @@
+.notification-content {
+    padding: 5px;
+    margin: auto;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+}
+
+.notification-img {
+    border-radius: 50%;
+    /* float: left; */
+    width: 70px;
+    height: 70px;
+}
+
+.notification-text {
+    display: flex;
+    align-items: center;
+    /* width: 80%; */
+    height: 70px;
+    color: #626262;
+    padding: 7px;
+}

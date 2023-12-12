@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #feedback-list {
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <form id="feedbackForm">
+        <label for="feedback">Your Feedback:</label>
+        <textarea id="feedback" name="feedback" required></textarea>
+        <br>
+        <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+    </form>
+
+    <div id="feedback-list">
+        <h2>Feedback Received:</h2>
+        <ul id="feedbackItems"></ul>
+    </div>
+
+    <script>
+        function submitFeedback() {
+            var feedbackText = document.getElementById('feedback').value;
+
+            if (feedbackText.trim() !== '') {
+                // Simulate sending feedback to a server (in a real app, you would use AJAX)
+                // For simplicity, we just add the feedback to the list without waiting for a response.
+                var feedbackList = document.getElementById('feedbackItems');
+                var listItem = document.createElement('li');
+                listItem.appendChild(document.createTextNode(feedbackText));
+                feedbackList.appendChild(listItem);
+
+                // Clear the input field after submitting
+                document.getElementById('feedback').value = '';
+            } else {
+                alert('Please enter your feedback before submitting.');
+            }
+        }
+    </script>
+
+</body>
+</html>

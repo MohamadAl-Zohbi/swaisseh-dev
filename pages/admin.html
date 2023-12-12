@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/fixed.css">
+    <link rel="stylesheet" href="../css/svg.css">
+    <link rel="stylesheet" href="../css/notification.css">
+    <link rel="stylesheet" href="../css/darkmode.css">
+    <title>Facebook</title>
+</head>
+
+<body>
+    <div id="hidden-containar">
+        <span id="close-hidden-containar">
+
+        </span>
+        <div id="video-container">
+            <img id="exit-video-container" style="width: 50px;cursor: pointer; height: 50px; float: right;"
+                src="https://cdn-icons-png.flaticon.com/128/5368/5368396.png" alt="exit">
+            <form id="upload-video" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                <label for="file-input">Choose a video:</label>
+
+                <input type="file" id="file-input" name="video">
+
+                <div id="selected-items">
+
+                </div>
+                <div class="action-btn">
+                    <button type="submit" class="send-btn">Send</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- <div id="loading-icon" style="display: inline-block; position: fixed; z-index: 2;top: 50%; left: 40%;background-color: red; display: none;">Loading...</div>     -->
+
+    <div id="taskbar">
+        <svg onclick="get_home()" class="home-svg svgs" style="color: gray;" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em"
+            class="x1lliihq x1k90msu x2h7rmj x1qfuztq x5e5rjt xxk0z11 xvy4d1p">
+            <path
+                d="M9.464 1.286C10.294.803 11.092.5 12 .5c.908 0 1.707.303 2.537.786.795.462 1.7 1.142 2.815 1.977l2.232 1.675c1.391 1.042 2.359 1.766 2.888 2.826.53 1.059.53 2.268.528 4.006v4.3c0 1.355 0 2.471-.119 3.355-.124.928-.396 1.747-1.052 2.403-.657.657-1.476.928-2.404 1.053-.884.119-2 .119-3.354.119H7.93c-1.354 0-2.471 0-3.355-.119-.928-.125-1.747-.396-2.403-1.053-.656-.656-.928-1.475-1.053-2.403C1 18.541 1 17.425 1 16.07v-4.3c0-1.738-.002-2.947.528-4.006.53-1.06 1.497-1.784 2.888-2.826L6.65 3.263c1.114-.835 2.02-1.515 2.815-1.977zM10.5 13A1.5 1.5 0 0 0 9 14.5V21h6v-6.5a1.5 1.5 0 0 0-1.5-1.5h-3z">
+            </path>
+        </svg>
+
+        <svg onclick="get_videos()" class="video-svg svgs" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em"
+            class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 xxk0z11 xvy4d1p">
+            <path d="M10.996 8.132A1 1 0 0 0 9.5 9v4a1 1 0 0 0 1.496.868l3.5-2a1 1 0 0 0 0-1.736l-3.5-2z"></path>
+            <path
+                d="M14.573 2H9.427c-1.824 0-3.293 0-4.45.155-1.2.162-2.21.507-3.013 1.31C1.162 4.266.817 5.277.655 6.477.5 7.634.5 9.103.5 10.927v.146c0 1.824 0 3.293.155 4.45.162 1.2.507 2.21 1.31 3.012.802.803 1.813 1.148 3.013 1.31C6.134 20 7.603 20 9.427 20h5.146c1.824 0 3.293 0 4.45-.155 1.2-.162 2.21-.507 3.012-1.31.803-.802 1.148-1.813 1.31-3.013.155-1.156.155-2.625.155-4.449v-.146c0-1.824 0-3.293-.155-4.45-.162-1.2-.507-2.21-1.31-3.013-.802-.802-1.813-1.147-3.013-1.309C17.866 2 16.397 2 14.573 2zM3.38 4.879c.369-.37.887-.61 1.865-.741C6.251 4.002 7.586 4 9.5 4h5c1.914 0 3.249.002 4.256.138.978.131 1.496.372 1.865.74.37.37.61.888.742 1.866.135 1.007.137 2.342.137 4.256 0 1.914-.002 3.249-.137 4.256-.132.978-.373 1.496-.742 1.865-.369.37-.887.61-1.865.742-1.007.135-2.342.137-4.256.137h-5c-1.914 0-3.249-.002-4.256-.137-.978-.132-1.496-.373-1.865-.742-.37-.369-.61-.887-.741-1.865C2.502 14.249 2.5 12.914 2.5 11c0-1.914.002-3.249.138-4.256.131-.978.372-1.496.74-1.865zM8 21.5a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2H8z">
+            </path>
+        </svg>
+        <svg onclick="get_notify()" class="svgs notification-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
+            fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+            <path
+                d="M22 19h-8.28a2 2 0 11-3.44 0H2v-1a4.52 4.52 0 011.17-2.83l1-1.17h15.7l1 1.17A4.42 4.42 0 0122 18zM18.21 7.44A6.27 6.27 0 0012 2a6.27 6.27 0 00-6.21 5.44L5 13h14z">
+            </path>
+        </svg>
+
+        <svg class="inbox-svg svgs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
+            fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+            <path
+                d="M16 4H8a7 7 0 000 14h4v4l8.16-5.39A6.78 6.78 0 0023 11a7 7 0 00-7-7zm-8 8.25A1.25 1.25 0 119.25 11 1.25 1.25 0 018 12.25zm4 0A1.25 1.25 0 1113.25 11 1.25 1.25 0 0112 12.25zm4 0A1.25 1.25 0 1117.25 11 1.25 1.25 0 0116 12.25z">
+            </path>
+        </svg>
+
+        <svg class="setting-svg svgs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="settings-medium"
+            data-supported-dps="24x24" fill="currentColor">
+            <path
+                d="M9.18 2l-4.3 2.52L6.22 8l-.52.91-3.7.55v5l3.64.54.54.93-1.34 3.53L9.14 22l2.29-2.9h1.09l2.3 2.9 4.32-2.52L17.79 16l.53-.93 3.68-.53v-5L18.32 9l-.51-.9 1.36-3.51L14.86 2l-2.33 3h-1zM12 9a3 3 0 11-3 3 3 3 0 013-3z">
+            </path>
+        </svg>
+
+    </div>
+    <nav id="nav">
+        <div class="nav_left">
+            <img src="../images/logo.png" alt="Logo" class="logo">
+            <ul>
+                <li id="notification-to-open"><img src="../images/notification.png" alt="notification"
+                        title="notification"></li>
+            </ul>
+        </div>
+        <div class="nav_right">
+            <div class="search_box">
+                <img src="../images/search.png" alt="search">
+                <input type="search" placeholder="Search">
+            </div>
+            <div class="nav_user_icon online_icon" onclick="settingsMenuToggle()">
+                <img id="profile" src="" alt="profile">
+            </div>
+        </div>
+        <!-- todo: setting menu -->
+        <div id="notification-menu">
+            <div style="margin: 10px;" id="notification-menu-content">
+                <h2 style="font-weight: 400;text-decoration: underline;">Notification</h2>
+                <br>
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="setting_menu">
+
+            <div id="dark_btn" class="">
+                <span id="darkactionBtn" class="darkactionBtn"></span>
+            </div>
+
+            <div class="settings_menu_inner">
+                <div class="user_profile">
+                    <img id="hidden-profile" src="../images/profile9.jpg" alt="Pro We Are Pro You Now">
+                    <div>
+                        <p id="name">Kashan Adnan</p>
+                        <a href="./user.html">See Your Profile</a>
+                    </div>
+                </div>
+                <hr />
+                <div class="user_profile">
+                    <img src="../images/feedback.png" alt="">
+                    <div>
+                        <p>Give Feedback</p>
+                        <a href="feedback.html">Help Us To improve new design</a>
+                    </div>
+                </div>
+                <hr />
+                <div class="setting_link">
+                    <img src="../images/setting.png" class="setting_icon" alt="">
+                    <a href="#">Setting & Privacy <img src="../images/arrow.png" alt="" width="10px"></a>
+                </div>
+                <div class="setting_link">
+                    <img src="../images/help.png" class="setting_icon" alt="">
+                    <a href="#">Help & Support <img src="../images/arrow.png" alt="" width="10px"></a>
+                </div>
+
+                <div class="setting_link">
+                    <img src="../images/logout.png" class="setting_icon" alt="">
+                    <a href="#">Logout<img src="../images/arrow.png" alt="" width="10px"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- todo: Left SIdeBar Start -->
+        <div class="left_sidebar">
+            <div class="important_link">
+                <a onclick="get_home()"><span class="svg-bigger-screen"><svg class="home-svg-bigscreen svgs-bigscreen" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em"
+                    class="x1lliihq x1k90msu x2h7rmj x1qfuztq x5e5rjt xxk0z11 xvy4d1p">
+                    <path
+                        d="M9.464 1.286C10.294.803 11.092.5 12 .5c.908 0 1.707.303 2.537.786.795.462 1.7 1.142 2.815 1.977l2.232 1.675c1.391 1.042 2.359 1.766 2.888 2.826.53 1.059.53 2.268.528 4.006v4.3c0 1.355 0 2.471-.119 3.355-.124.928-.396 1.747-1.052 2.403-.657.657-1.476.928-2.404 1.053-.884.119-2 .119-3.354.119H7.93c-1.354 0-2.471 0-3.355-.119-.928-.125-1.747-.396-2.403-1.053-.656-.656-.928-1.475-1.053-2.403C1 18.541 1 17.425 1 16.07v-4.3c0-1.738-.002-2.947.528-4.006.53-1.06 1.497-1.784 2.888-2.826L6.65 3.263c1.114-.835 2.02-1.515 2.815-1.977zM10.5 13A1.5 1.5 0 0 0 9 14.5V21h6v-6.5a1.5 1.5 0 0 0-1.5-1.5h-3z">
+                    </path>
+                </svg></span>Latest News</a>
+                <a onclick="get_videos()"><span class="svg-bigger-screen"><svg class="video-svg-bigscreen svgs-bigscreen" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em"
+                    class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 xxk0z11 xvy4d1p">
+                    <path d="M10.996 8.132A1 1 0 0 0 9.5 9v4a1 1 0 0 0 1.496.868l3.5-2a1 1 0 0 0 0-1.736l-3.5-2z"></path>
+                    <path
+                        d="M14.573 2H9.427c-1.824 0-3.293 0-4.45.155-1.2.162-2.21.507-3.013 1.31C1.162 4.266.817 5.277.655 6.477.5 7.634.5 9.103.5 10.927v.146c0 1.824 0 3.293.155 4.45.162 1.2.507 2.21 1.31 3.012.802.803 1.813 1.148 3.013 1.31C6.134 20 7.603 20 9.427 20h5.146c1.824 0 3.293 0 4.45-.155 1.2-.162 2.21-.507 3.012-1.31.803-.802 1.148-1.813 1.31-3.013.155-1.156.155-2.625.155-4.449v-.146c0-1.824 0-3.293-.155-4.45-.162-1.2-.507-2.21-1.31-3.013-.802-.802-1.813-1.147-3.013-1.309C17.866 2 16.397 2 14.573 2zM3.38 4.879c.369-.37.887-.61 1.865-.741C6.251 4.002 7.586 4 9.5 4h5c1.914 0 3.249.002 4.256.138.978.131 1.496.372 1.865.74.37.37.61.888.742 1.866.135 1.007.137 2.342.137 4.256 0 1.914-.002 3.249-.137 4.256-.132.978-.373 1.496-.742 1.865-.369.37-.887.61-1.865.742-1.007.135-2.342.137-4.256.137h-5c-1.914 0-3.249-.002-4.256-.137-.978-.132-1.496-.373-1.865-.742-.37-.369-.61-.887-.741-1.865C2.502 14.249 2.5 12.914 2.5 11c0-1.914.002-3.249.138-4.256.131-.978.372-1.496.74-1.865zM8 21.5a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2H8z">
+                    </path>
+                </svg></span> watch</a>
+                <!-- <a href="#"><img src="../images/group.png" alt="Group">Group</a> -->
+                <!-- <a href="#"><img src="../images/marketplace.png" alt="MarketpLace">MarketpLace</a> -->
+                <a onclick="get_notify()"><span class="svg-bigger-screen"><svg class="notification-svg-bigscreen svgs-bigscreen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
+                    fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+                    <path
+                        d="M22 19h-8.28a2 2 0 11-3.44 0H2v-1a4.52 4.52 0 011.17-2.83l1-1.17h15.7l1 1.17A4.42 4.42 0 0122 18zM18.21 7.44A6.27 6.27 0 0012 2a6.27 6.27 0 00-6.21 5.44L5 13h14z">
+                    </path>
+                </svg></span> notification</a>
+
+                <a ><span class="svg-bigger-screen"><svg class="inbox-svg-bigscreen svgs-bigscreen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
+                    fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+                    <path
+                        d="M16 4H8a7 7 0 000 14h4v4l8.16-5.39A6.78 6.78 0 0023 11a7 7 0 00-7-7zm-8 8.25A1.25 1.25 0 119.25 11 1.25 1.25 0 018 12.25zm4 0A1.25 1.25 0 1113.25 11 1.25 1.25 0 0112 12.25zm4 0A1.25 1.25 0 1117.25 11 1.25 1.25 0 0116 12.25z">
+                    </path>
+                </svg></span> usres</a>
+
+                <a ><span class="svg-bigger-screen"><svg class="setting-svg-bigscreen svgs-bigscreen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="settings-medium"
+                    data-supported-dps="24x24" fill="currentColor">
+                    <path
+                        d="M9.18 2l-4.3 2.52L6.22 8l-.52.91-3.7.55v5l3.64.54.54.93-1.34 3.53L9.14 22l2.29-2.9h1.09l2.3 2.9 4.32-2.52L17.79 16l.53-.93 3.68-.53v-5L18.32 9l-.51-.9 1.36-3.51L14.86 2l-2.33 3h-1zM12 9a3 3 0 11-3 3 3 3 0 013-3z">
+                    </path>
+                </svg></span> settings</a>
+                <!-- <a href="#">See More</a> -->
+            </div>
+            <!-- <div class="shortcut_links">
+                <p>Your Shortcut</p>
+                <a href=""><img src="../images/shortcut-1.png">Web Devolopers</a>
+                <a href=""><img src="../images/shortcut-2.png">Web Design</a>
+                <a href=""><img src="../images/shortcut-3.png">Graphic Desing</a>
+                <a href=""><img src="../images/shortcut-4.png">Front End Devloper</a>
+            </div> -->
+        </div>
+        <!-- todo: Left SIdeBar End -->
+
+        <!-- todo: Main Content Start -->
+        <div class="main_content">
+            <article class="article-content" id="home">
+                <div class="post_container">
+                    <div class="user_profile">
+                        <img id="post_container_profile" src="../images/profile9.jpg" alt="Pro We Are Pro You Now">
+                        <div>
+                            <p id="post_container_username">Kashan Adnan</p>
+                            <small>Public <i class="fa fa-caret-down"></i></small>
+                        </div>
+                    </div>
+                    <div class="post_input_container">
+                        <input id="input_vlaue" placeholder="What's on Your Mind" />
+                        <div class="add_post_link">
+                            <label onclick="post('video')"><img src="../images/live-video.png"
+                                    alt="Its Video">Video</label>
+                            <label onclick="post('photo')"><img src="../images/photo.png"
+                                    alt="Its Video Time">Photo</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="post">post</div>
+            </article>
+            
+        </div>
+        <!-- todo: Main Content End -->
+
+        <!-- todo:  Right SidebarStart -->
+        <div class="right_sidebar">
+            <div class="sider_bar_title">
+                <h4>Events</h4>
+                <a href="#">See All</a>
+            </div>
+            <div class="event">
+                <div class="Left_event">
+                    <h3>18</h3>
+                    <span>March</span>
+                </div>
+                <div class="Right_event">
+                    <h4>Social Media</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Willson Tech Park</p>
+                    <a href="#">More Info</a>
+                </div>
+            </div>
+            <div class="event">
+                <div class="Left_event">
+                    <h3>22</h3>
+                    <span>June</span>
+                </div>
+                <div class="Right_event">
+                    <h4>Mobile Marketting</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Orangi Town Karachi</p>
+                    <a href="#">More Info</a>
+                </div>
+            </div>
+            <div class="sider_bar_title">
+                <h4>Advertisement</h4>
+                <a href="#">CLose</a>
+            </div>
+            <img src="../images/logo.jpg" alt="Advertisement" class="advirsment_side_bar">
+            <!-- <div class="sider_bar_title">
+                <h4>Conversation</h4>
+                <a href="#">Hide Chat</a>
+            </div>
+            <div class="online_list">
+                <div class="online_icon">
+                    <img src="../images/member-1.png" alt="">
+                </div>
+                <p>Kashan Adnan</p>
+            </div>
+            <div class="online_list">
+                <div class="online_icon">
+                    <img src="../images/member-2.png" alt="">
+                </div>
+                <p>Izhan Farhan</p>
+            </div>
+            <div class="online_list">
+                <div class="online_icon">
+                    <img src="../images/member-3.png" alt="">
+                </div>
+                <p>Kamran Sheikh</p>
+            </div> -->
+            <!-- todo: Right  SIdeBar End -->
+
+
+
+
+</body>
+<script src="../client-js/ip.js"></script>
+<script src="../client-js/video_scrolling.js"></script>
+<script src="../client-js/action_api/like_unlike.js"></script>
+<script src="../client-js/action_api/add_comment.js"></script>
+<script src="../client-js/profile.js"></script>
+
+<script src="../client-js/get_videos.js"></script>
+<script src="../client-js/get_comments.js"></script>
+
+<script src="../client-js/work-with-the-post.js"></script>
+<script src="../script.js"></script>
+<script src="../upload.js"></script>
+<script src="../client-js/get_notify.js"></script>
+<script src="../client-js/get_notification_containar.js"></script>
+
+
+
+</html>

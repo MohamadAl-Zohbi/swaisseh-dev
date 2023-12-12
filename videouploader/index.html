@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Uploader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #uploader-container {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        #upload-btn {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #file-input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="uploader-container">
+        <h2>Video Uploader</h2>
+        <button id="upload-btn">Upload Video</button>
+        <input type="file" id="file-input" accept="video/*" />
+        <div id="file-info"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const uploadButton = document.getElementById('upload-btn');
+            const fileInput = document.getElementById('file-input');
+            const fileInfo = document.getElementById('file-info');
+
+            uploadButton.addEventListener('click', function () {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', function () {
+                const file = fileInput.files[0];
+
+                if (file) {
+                    const fileSize = (file.size / (1024 * 1024)).toFixed(2); // in MB
+                    fileInfo.innerHTML = `Selected file: ${file.name} (Size: ${fileSize} MB)`;
+                } else {
+                    fileInfo.innerHTML = 'No file selected';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
